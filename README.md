@@ -1,8 +1,10 @@
 # Plugins for Musescore
 
 <h3>Chord Identifier Plugin  for Musescore</h3>
-- Identify chords and put chord symbol between treble staff and bass staff.  
-- Identify chord by measure,you can define how many chord in one measure.  
+- Identify chords and put chord symbol between treble staff and bass staff.
+
+
+- Identify chord by measure,you can define how many chord in one measure.   
 - Select chord notes in 3 modes, bass staff only,bass+highest note,or full notes.  
 - Chord sysbol can be display in different modes,such as Normal chord F7,or Roman Chord level IV7.  
 - A mew chord-only score can be creat if you want.  
