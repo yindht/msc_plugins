@@ -1,19 +1,19 @@
 # Plugins for Musescore
 
 <h3>Chord Identifier Plugin  for Musescore</h3>
-- Identify chords and put chord symbol between treble staff and bass staff.<br/>
-- Identify chord by measure,you can define how many chord in one measure.<br/>
-- Select chord notes in 3 modes, bass staff only,bass+highest note,or full notes<br/>
-- Chord sysbol can be display in different modes,such as Normal chord F7,or Roman Chord level IV7.<br/>
-- A mew chord-only score can be creat if you want.<br/>
-- Works with single or multiple voices, accross one or more staves (like in sheet music for piano).<br/>
-- Inversions are indicated.<br/>
+- Identify chords and put chord symbol between treble staff and bass staff.
+- Identify chord by measure,you can define how many chord in one measure.
+- Select chord notes in 3 modes, bass staff only,bass+highest note,or full notes.
+- Chord sysbol can be display in different modes,such as Normal chord F7,or Roman Chord level IV7.
+- A mew chord-only score can be creat if you want.
+- Works with single or multiple voices, accross one or more staves (like in sheet music for piano).
+- Inversions are indicated.
 - Notes are colored according to their function in the chord:<br/>
-	* Root in green<br/>
-	* Third in brown<br/>
-	* Seventh in red<br/>
-- Works on whole sheet or on selected portion.<br/>
-- Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).<br/>
+	* Root in green
+	* Third in brown
+	* Seventh in red
+- Works on whole sheet or on selected portion.
+- Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).
 
 <h3>Example:</h3>
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>
