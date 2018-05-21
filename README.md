@@ -16,7 +16,7 @@
 - Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).<br/>
 
 <h3>Example:</h3>
-<img height="150px" src="https://github.com/yindht/msc_plugins/example1.png"/>
+<img height="150px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>
 <br/>
 
 <h3>Example:</h3>
