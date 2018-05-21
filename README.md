@@ -33,11 +33,11 @@
 2.you may need adjust parameter for different score  in .qml plugin file
 - chordPerMeasure  //you need to define how many chord per measure for your specific score.  
 - chordIdentifyMode  //0:only left hand ,1:left hand + right(no higtest melody ) , 3:all notes   
-- displayChordMode
 - creatNewChordScore //creat a new chord-only score  
-- displayChordColor  0  //0: Normal chord C  F7  Gm  
+- displayChordMode  //0: Normal chord C  F7  Gm  
 			//1: Roman Chord level   Ⅳ  
 			//2: Normal+Roman
+- displayChordColor  0
                          
   You can change those parameter in Musescore plugin Creator.
   
