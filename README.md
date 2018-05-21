@@ -30,6 +30,7 @@
 - Restart MuseScore.
 - Enable the plugin in "Plugin Manager" (you can also associate a shortcut).
 
+
 2.you may need adjust parameter for different score  in .qml plugin file
   chordPerMeasure  //you need to define how many chord per measure for your specific score.
   chordIdentifyMode  //0:only left hand ,1:left hand + right(no higtest melody ) , 3:all notes 
@@ -54,9 +55,13 @@ More info: https://musescore.org/en/handbook/plugins
 <h3>Acknowledgment:</h3>
 I started this plugin as an improvement of: 
   https://github.com/rousselmanu/msc_plugins  plugin by rousselmanu
+  
   https://github.com/andresn/standard-notation-experiments/tree/master/MuseScore/plugins/findharmonies
+  
   http://musescore.org/en/project/findharmony  by Merte
+  
   https://github.com/berteh/musescore-chordsToNotes/  - Jon Ensminger (AddNoteNameNoteHeads v. 1.2 plugin)
+  
   Thank you :-)
 
 
