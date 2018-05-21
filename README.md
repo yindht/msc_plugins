@@ -29,7 +29,7 @@
 - Put the plugin (.qml) in the MuseScore/plugins folder (basically "C:/users/%USERNAME%/Documents/MuseScore2/Plugins" in Windows).
 - Restart MuseScore.
 - Enable the plugin in "Plugin Manager" (you can also associate a shortcut).
-
+                       
 
 2.you may need adjust parameter for different score  in .qml plugin file
   chordPerMeasure  //you need to define how many chord per measure for your specific score.
@@ -54,6 +54,7 @@ More info: https://musescore.org/en/handbook/plugins
 
 <h3>Acknowledgment:</h3>
 I started this plugin as an improvement of: 
+                       
   https://github.com/rousselmanu/msc_plugins  plugin by rousselmanu
   
   https://github.com/andresn/standard-notation-experiments/tree/master/MuseScore/plugins/findharmonies
