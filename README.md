@@ -23,7 +23,7 @@
 <br/>  
 
 <h3>Example 2 :Roma chord display mode</h3>  
-<img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example2.png"/>  
+<img src="https://github.com/yindht/msc_plugins/blob/master/example2.png"/>  
 <br/>  
 
 <h3>Example 3 : New chord-only staff</h3>  
