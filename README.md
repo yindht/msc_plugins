@@ -1,4 +1,4 @@
-# Plugins for Musescore
+# Chord Identifier Plugin for Musescore
 
 <h3>Chord Identifier Plugin  for Musescore</h3>
 
