@@ -21,6 +21,10 @@
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>  
 <br/>  
 
+<h3>Example:</h3>  
+<img src="https://github.com/yindht/msc_plugins/blob/master/example2.png"/>  
+<br/> 
+
 <h3>HOW-TO:</h3>
 
 
