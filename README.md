@@ -8,7 +8,7 @@
 - Select chord notes in 3 modes, bass staff only,bass+highest note,or full notes.  
 - Chord sysbol can be display in different modes,such as Normal chord F7,or Roman Chord level IV7.  
 - A mew chord-only score can be creat if you want.
-- New chord-only score can tell i-iv progression. 
+- New chord-only score can tell i-iv progression by coloring note symbol. 
 - Works with single or multiple voices, accross one or more staves (like in sheet music for piano).  
 - Inversions are indicated.  
 - Notes are colored according to their function in the chord:<br/>  
