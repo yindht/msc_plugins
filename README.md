@@ -17,15 +17,15 @@
 - Works on whole sheet or on selected portion.
 - Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).  
 
-<h3>Example 1:Chord</h3>  
+<h3>Example 1 :Chord</h3>  
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>  
 <br/>  
 
-<h3>Example 2:New Chord-only staff</h3>  
+<h3>Example 2 :Roma chord display mode</h3>  
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example2.png"/>  
 <br/>  
 
-<h3>Example 3: Roma chord display mode</h3>  
+<h3>Example 3 : New chord-only staff</h3>  
 <img src="https://github.com/yindht/msc_plugins/blob/master/example3.png"/>  
 <br/> 
 
