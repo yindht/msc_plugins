@@ -741,7 +741,7 @@ MuseScore {
       RowLayout {
         id: chrodMeasure
         spacing: 20
-        Text  { text:  "  chords per measure:"; font.bold: true }
+        Text  { text:  "  Chords per Measure:"; font.bold: true }
         property list<RadioButton> buttonList: [
           RadioButton { parent: chrodMeasure;text: "4"; exclusiveGroup: rowA },
           RadioButton { parent: chrodMeasure;text: "3"; exclusiveGroup: rowA },
