@@ -1,22 +1,9 @@
 # Chord Identifier Plugin for Musescore
 
 <h3>Chord Identifier Plugin  for Musescore</h3>
-
-
-- Identify chords and put chord symbol between treble staff and bass staff.
-- Identify chord by measure,you can define how many chord in one measure.   
-- Select chord notes in 3 modes, bass staff only,bass+highest note,or full notes.  
-- Chord sysbol can be display in different modes,such as Normal chord F7,or Roman Chord level IV7.  
-- A mew chord-only score can be creat if you want.
-- New chord-only score can tell i-iv progression by coloring note symbol. 
-- Works with single or multiple voices, accross one or more staves (like in sheet music for piano).  
-- Inversions are indicated.  
-- Notes are colored according to their function in the chord:<br/>  
-	* Root in green  
-	* Third in brown  
-	* Seventh in red  
-- Works on whole sheet or on selected portion.
 - Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).  
+- Identify chords and put chord symbol between treble staff and bass staff.
+- Identify chord by measure, you can also define how many chord in one measure.   
 
 <h3>Example 1 :Chord</h3>  
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>  
@@ -37,26 +24,34 @@
 - [DOWNLOAD](https://github.com/rousselmanu/msc_plugins/archive) the last release.  
 - Put the plugin (.qml) in the MuseScore/plugins folder (basically "C:/users/%USERNAME%/Documents/MuseScore2/Plugins" in Windows).  
 - Restart MuseScore.
-- Enable the plugin in "Plugin Manager" (you can also associate a shortcut).<br/>  
+- Go to menu "Plugins"->"Plugin Manager" , Enable the plugin "chord Identifer" (you can also associate a shortcut). then clike "OK"<br/>  
   
-2.you may need adjust parameter for different score  in .qml plugin file
-- chordPerMeasure  //you need to define how many chord per measure for your specific score.  
-- chordIdentifyMode  //0:only left hand ,1:left hand + right(no higtest melody ) , 3:all notes   
-- creatNewChordScore //creat a new chord-only score  
-- displayChordMode  //0: Normal chord C  F7  Gm  
-			//1: Roman Chord level   Ⅳ  
-			//2: Normal+Roman
-- displayChordColor  0
+2.run plugin.
+Go to menu Plugins-> Chords->chord Identifer,then the plugin should dock on bottom-left of Musscore UI.
+Then Set parameters and click "OK" 
+Parameters:
+- Chord Per Measure:you need to define how many chords per measure for your specific score.
+
+- Chord in :notes in a your choice staff (Grand/treble/all) will be used for chord identification.  Treble+ grand mode  will ignore  highest note(melody)
+
+- Symbol : 
+Normal chord( C  F7  Gm )  
+Roman Chord level  ( Ⅳ) 
+Normal+Roman(C/I)
+
+- Bass : it will figure out bass note if bass note is not chord root note,such as (C/G ) 
+
+- Hightlight chord notes：  chord notes display on different color.
+
+- Create New Chrod Score:creat a new chord-only score 
                          
-  You can change those parameter in Musescore plugin Creator.
-  
-3.run plugin.
 
-4.if the gap is two narrow between treble staff and bass staff,you can change it ,Muscore->style->General->Page->Grand staff distance.  
+3.Tips
+-you can try to set different parameters  to get different result,Ctrl+Z can undo.
+-Default it is for whole score if you don't select any measure.it also works on selected portion,such as serval measures.it is useful for complicated score ,such as 4/4 ->3/4.
+-you can adjust chord symbols manually if think it is not right or not accuracy. 
+-if the gap is two narrow between treble staff and bass staff,you can change it ,Muscore->style->General->Page->Grand staff distance.  
 
-5.review chord result, you can adjust some chord symbols manually if think it is not right or not accuracy.   
-
-6.enjoy it.  
 
 More info: https://musescore.org/en/handbook/plugins  
 
@@ -75,5 +70,5 @@ I started this plugin as an improvement of:
 
 
 Comments and feedbacks are welcome!<br/>  
-Yindht Xu  
+Ke Xu
 Mail: yindht@gmail.com  
