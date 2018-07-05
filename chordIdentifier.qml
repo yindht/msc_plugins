@@ -796,7 +796,7 @@ MuseScore {
       RowLayout {
         id: newScoreMode
         spacing: 20
-        Text  { text:  "  Creat Chord Score:"; font.bold: true }
+        Text  { text:  "  New Chord Score:"; font.bold: true }
         property list<RadioButton> buttonList: [
           RadioButton { parent: newScoreMode;text: "Yes"; exclusiveGroup: rowF },
           RadioButton { parent: newScoreMode;text: "No"; exclusiveGroup: rowF ;checked: true }
