@@ -18,40 +18,53 @@
 //  Thank you :-)
 //=============================================================================
 
-//import QtQuick 2.3
-//import QtQuick.Controls 1.2
-//import QtQuick.Dialogs 1.2
-//import QtQuick.Layouts 1.1
-//import QtQuick.Controls.Styles 1.3
 import MuseScore 1.0
 import QtQuick 2.0
 
-import QtQuick 2.0
-import MuseScore 1.0
+import QtQuick.Layouts 1.0
+import QtQuick.Controls 1.0
+import QtQuick.Dialogs 1.0
 
 MuseScore {
     menuPath: "Plugins.Chords.Chord Identifier"
-	  description: "Identify chords and put chord symbol on top."
-    version: "2.0.0"
+    description: "Identify chords and put chord symbol on top."
+    version: "3.0.0"
+    
+    pluginType: "dock"
+    dockArea:   "left"
 
+//    pluginType: "dialog"
+//    width: 370
+//    height: 260
+    id: chordDialog
+    
+    onRun: {
+      if (typeof curScore === 'undefined') {
+        console.log("Quitting: no score");
+        Qt.quit();
+      }
+      var cursor = curScore.newCursor();
+      cursor.rewind(1); // start of selection
+    }
 
     property variant chordPerMeasure : 1    //you need to define how many chord per measure for your specific score.
-    property variant chordIdentifyMode : 2  //0:only left hand ,1:left hand + right(no higtest melody ) , 2:all notes
-    property variant creatNewChordScore : 0 //creat a new chord-only score
-    property variant displayChordMode : 2  //0: Normal chord C  F7  Gm
+    property variant chordIdentifyMode : 0  //0:only left hand ,1:left hand + right(no higtest melody ) , 2:all notes
+    property variant displayChordMode : 0  //0: Normal chord C  F7  Gm
                                             //1: Roman Chord level   Ⅳ
                                             //2: Normal+Roman
     property variant displayChordColor : 0  //0: disable ,1 enable
+    property variant display_bass_note : 0 //set to 1: bass note is specified after a / like that: C/E for first inversion C chord.
+    property variant creatNewChordScore : 0 //creat a new chord-only score
 
     property variant black : "#000000"
     //property variant color7th : "#A00000"
     //property variant color5th : "#803030"
     //property variant color3rd : "#605050"
     //property variant colorroot : "#005000"
-    property variant color7th : "#0000aa"
-    property variant color5th : "#0000aa"
-    property variant color3rd : "#0000aa"
-    property variant colorroot : "#0000ff"
+    property variant color7th : "#0000ff"
+    property variant color5th : "#0000ff"
+    property variant color3rd : "#0000ff"
+    property variant colorroot : "#0000aa"
     property variant red : "#ff0000"
     property variant green : "#00ff00"
     property variant blue : "#0000ff"
@@ -143,6 +156,7 @@ MuseScore {
 
         return intervals;
     }
+    
 
     function compare_arr(ref_arr, search_elt) { //returns an array of size ref_tab.length
         if (ref_arr == null || search_elt == null) return [];
@@ -165,11 +179,6 @@ MuseScore {
         var INVERSION_NOTATION = 0; //set to 0: inversions are not shown
                                     //set to 1: inversions are noted with superscript 1, 2 or 3
                                     //set to 2: figured bass notation is used instead
-
-
-        var DISPLAY_BASS_NOTE = 1; //set to 1: bass note is specified after a / like that: C/E for first inversion C chord.
-
-
 
 
         //Standard notation for inversions:
@@ -364,7 +373,7 @@ MuseScore {
             }
 
 
-            if(DISPLAY_BASS_NOTE===1 && inv>0){
+            if(display_bass_note===1 && inv>0){
                 chordName+="/"+getNoteName(bass.tpc);
             }
 
@@ -421,7 +430,6 @@ MuseScore {
             //var ts = newElement(Element.TEXT);
             //ts.setSig(numerator, denominator);
 
-
             score.addText("title", oldScore.title);
             score.addText("subtitle", oldScore.subtitle);
             score.addText("composer", oldScore.composer);
@@ -476,28 +484,46 @@ MuseScore {
             }
     }
 
-      onRun: {
+
+
+      function runsheet(){
             console.log("Hello Walker");
 
-            if (typeof curScore === 'undefined')
-                  Qt.quit();
+                  if (typeof curScore === 'undefined')
+                      Qt.quit();
 
 
-                  var segment = curScore.firstSegment();
-                  var lastSegment = curScore.lastSegment;
-                  var measure = curScore.firstMeasure;
-                  var tickFirstMeasure = measure.lastSegment.tick;
-                  var tickPerMeasure=tickFirstMeasure;
-                  measure = measure.nextMeasure;
-
-                  if(measure!=null)
-                     tickPerMeasure = measure.lastSegment.tick-measure.firstSegment.tick;
-
-                  console.log("measure"+tickPerMeasure);
-
+                  var tickPerMeasure;
                   var cursor = curScore.newCursor();
-                  cursor.rewind(0);
+                  cursor.rewind(1);
 
+                  if (!cursor.segment) {
+                      console.log("no selection,do all staff");
+                      cursor.rewind(0);
+                      var measure = cursor.measure;
+                      measure = measure.nextMeasure;
+                      if(measure!=null)
+                         tickPerMeasure = measure.lastSegment.tick-measure.firstSegment.tick;
+                      console.log("measure"+tickPerMeasure);
+                      
+                      var lastSegment = curScore.lastSegment;
+
+                      cursor.rewind(0);
+                      var segment = cursor.segment;
+                      
+                  }
+                  else{
+                      var measure = cursor.measure;
+                      if(measure!=null)
+                         tickPerMeasure = measure.lastSegment.tick-measure.firstSegment.tick;
+                      console.log("measure"+tickPerMeasure);
+                      
+                      cursor.rewind(2);
+                      var lastSegment = cursor.segment;
+
+                      cursor.rewind(1);
+                      var segment = cursor.segment;
+                  }
 
                   cursor.track=0;
                   cursor.staffIdx=1;
@@ -515,17 +541,7 @@ MuseScore {
                   var KeySig = 0;
                   var scoreChordStr ='';
 
-
-
-                  /*
-                  if(tickFirstMeasure !=  tickPerMeasure){
-                      segment = measure.firstSegment;
-                      cursor.nextMeasure();
-                      tickStart = tickFirstMeasure;
-                  }*/
-
-
-                  while (segment) {
+                  while (segment &&(segment.tick <= lastSegment.tick )) {
                      var highestNote='';
                      for (var track = 0; track < curScore.ntracks; ++track) {
                         //console.log(segment.tick+ " " + segment );
@@ -589,6 +605,7 @@ MuseScore {
 
                                     idx_note=0;
                                     idx_note_all=0;
+
                                     tickStart=segment.tick;
 
                                     if(element._name()== "BarLine"){
@@ -640,22 +657,197 @@ MuseScore {
                                              idx_note++;
                                          }
                                      }
-
-
-
                                  }
-
-
                               }
                         }
                       }
                       segment = segment.next;
                   }
 
-            if(creatNewChordScore==1){
+              if(creatNewChordScore==1){
                  creatNewScore(curScore,scoreChordStr);
+              }
             }
 
-            Qt.quit();
-            }
+
+  function showVals () {
+    for (var i=0; i < chrodMeasure.buttonList.length; i++ ) {
+      var s = chrodMeasure.buttonList[i];
+      if (s.checked) {
+          chordPerMeasure=chrodMeasure.buttonList.length-i;
+          break;
       }
+    }
+
+    for (var i=0; i < chordStaff.buttonList.length; i++ ) {
+      var s = chordStaff.buttonList[i];
+      if (s.checked) {
+          chordIdentifyMode=chordStaff.buttonList.length-1-i;
+          break;
+      }
+    }
+    
+    
+    for (var i=0; i < symbolMode.buttonList.length; i++ ) {
+      var s = symbolMode.buttonList[i];
+      if (s.checked) {
+          displayChordMode=symbolMode.buttonList.length-1-i;
+          break;
+      }
+    }
+    
+    for (var i=0; i < bassMode.buttonList.length; i++ ) {
+      var s = bassMode.buttonList[i];
+      if (s.checked) {
+          display_bass_note=chordColcorMode.buttonList.length-1-i;
+          break;
+      }
+    }
+
+
+    for (var i=0; i < chordColcorMode.buttonList.length; i++ ) {
+      var s = chordColcorMode.buttonList[i];
+      if (s.checked) {
+          displayChordColor=chordColcorMode.buttonList.length-1-i;
+          break;
+      }
+    }
+    
+    for (var i=0; i < newScoreMode.buttonList.length; i++ ) {
+      var s = newScoreMode.buttonList[i];
+      if (s.checked) {
+          creatNewChordScore=newScoreMode.buttonList.length-1-i;
+          break;
+      }
+    }
+
+
+  }
+
+
+  ColumnLayout {
+      // Left: column of note names
+      // Right: radio buttons in flat/nat/sharp positions
+      id: radioVals
+      anchors.left: pedalPositions.right
+
+      RowLayout {
+        id: flatRow1
+        spacing: 20
+        Text  { text:  "  "; font.bold: true }
+
+      }
+
+      RowLayout {
+        id: chrodMeasure
+        spacing: 20
+        Text  { text:  "  chords per measure:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: chrodMeasure;text: "4"; exclusiveGroup: rowA },
+          RadioButton { parent: chrodMeasure;text: "3"; exclusiveGroup: rowA },
+          RadioButton { parent: chrodMeasure;text: "2"; exclusiveGroup: rowA },
+          RadioButton { parent: chrodMeasure;text: "1"; exclusiveGroup: rowA ;checked: true }
+        ]
+      }
+      
+      RowLayout {
+        id: chordStaff
+        spacing: 20
+        Text  { text:  "  Chord for:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: chordStaff;text: "All"; exclusiveGroup: rowB },
+          RadioButton { parent: chordStaff;text: "Treble+grand"; exclusiveGroup: rowB },
+          RadioButton { parent: chordStaff;text: "Grand"; exclusiveGroup: rowB ;checked: true }
+        ]
+      }
+      
+      RowLayout {
+        id: symbolMode
+        spacing: 20
+        Text  { text:  "  Symbol:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: symbolMode;text: "N+R"; exclusiveGroup: rowC ;},
+          RadioButton { parent: symbolMode;text: "Roman"; exclusiveGroup: rowC ;},
+          RadioButton { parent: symbolMode;text: "Normal"; exclusiveGroup: rowC ;checked: true }
+        ]
+      }
+
+      RowLayout {
+        id: bassMode
+        spacing: 20
+        Text  { text:  "  Bass:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: bassMode;text: "Yes"; exclusiveGroup: rowD },
+          RadioButton { parent: bassMode;text: "No"; exclusiveGroup: rowD ;checked: true }
+        ]
+      }
+
+      RowLayout {
+        id: chordColcorMode
+        spacing: 20
+        Text  { text:  "  Highlight Chord Notes:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: chordColcorMode;text: "Yes"; exclusiveGroup: rowE },
+          RadioButton { parent: chordColcorMode;text: "No"; exclusiveGroup: rowE ;checked: true }
+
+        ]
+      }
+
+      RowLayout {
+        id: newScoreMode
+        spacing: 20
+        Text  { text:  "  Creat Chord Score:"; font.bold: true }
+        property list<RadioButton> buttonList: [
+          RadioButton { parent: newScoreMode;text: "Yes"; exclusiveGroup: rowF },
+          RadioButton { parent: newScoreMode;text: "No"; exclusiveGroup: rowF ;checked: true }
+
+        ]
+      }
+
+
+
+      ExclusiveGroup { id: rowA; onCurrentChanged: { showVals(); }}
+      ExclusiveGroup { id: rowB; onCurrentChanged: { showVals(); }}
+      ExclusiveGroup { id: rowC; onCurrentChanged: { showVals(); }}
+      ExclusiveGroup { id: rowD; onCurrentChanged: { showVals(); }}
+      ExclusiveGroup { id: rowE; onCurrentChanged: { showVals(); }}
+      ExclusiveGroup { id: rowF; onCurrentChanged: { showVals(); }}
+  }
+
+
+  Button {
+    id: buttonCancel
+    text: qsTr("Cancel")
+    anchors.bottom: chordDialog.bottom
+    anchors.right: chordDialog.right
+    anchors.bottomMargin: 10
+    anchors.rightMargin: 10
+    width: 100
+    height: 40
+    onClicked: {
+      Qt.quit();
+    }
+  }
+
+
+
+  Button {
+    id: buttonOK
+    text: qsTr("OK")
+    width: 100
+    height: 40
+    anchors.bottom: chordDialog.bottom
+    anchors.right:  buttonCancel.left
+    anchors.topMargin: 10
+    anchors.bottomMargin: 10
+    onClicked: {
+      curScore.startCmd();
+      runsheet();
+      curScore.endCmd();
+//      Qt.quit();
+    }
+  }
+
+}
+
+
