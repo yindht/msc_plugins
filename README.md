@@ -74,5 +74,5 @@ I started this plugin as an improvement of:
 
 
 Comments and feedbacks are welcome!<br/>  
-Ke Xu
+Ke Xu  
 Mail: yindht@gmail.com  
