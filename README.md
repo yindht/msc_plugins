@@ -1,9 +1,10 @@
 # Chord Identifier Plugin for Musescore
 
-<h3>Chord Identifier Plugin  for Musescore</h3>  
-- Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).  
-- Identify chords and put chord symbol between treble staff and bass staff.  
-- Identify chord by measure, you can also define how many chord in one measure.  
+<h3>Chord Identifier Plugin  for Musescore</h3>
+
+- Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).    
+- Identify chords and put chord symbol between treble staff and bass staff.    
+- Identify chord by measure, you can also define how many chord in one measure.    
 
 <h3>Example 1 :Chord</h3>  
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>  
@@ -20,15 +21,16 @@
 <h3>HOW-TO:</h3>
 
 
-1.download 
+1.Download 
 - [DOWNLOAD](https://github.com/rousselmanu/msc_plugins/archive) the last release.  
 - Put the plugin (.qml) in the MuseScore/plugins folder (basically "C:/users/%USERNAME%/Documents/MuseScore2/Plugins" in Windows).  
 - Restart MuseScore.
 - Go to menu "Plugins"->"Plugin Manager" , Enable the plugin "chord Identifer" (you can also associate a shortcut). then clike "OK"<br/>  
   
-2.run plugin.  
+2.Run plugin.  
 Go to menu Plugins-> Chords->chord Identifer,then the plugin should dock on bottom-left of Musscore UI.
-Then Set parameters and click "OK" 
+Then Set parameters and click "OK"  
+<img src="https://github.com/yindht/msc_plugins/blob/master/panel.png"/>
 Parameters:
 - Chord Per Measure:you need to define how many chords per measure for your specific score.  
 
@@ -47,10 +49,10 @@ Normal+Roman(C/I)
                          
 
 3.Tips  
--you can try to set different parameters  to get different result,Ctrl+Z can undo.  
--Default it is for whole score if you don't select any measure.it also works on selected portion,such as serval measures.it is useful for complicated score ,such as 4/4 ->3/4.  
--you can adjust chord symbols manually if think it is not right or not accuracy.   
--if the gap is two narrow between treble staff and bass staff,you can change it ,Muscore->style->General->Page->Grand staff distance.    
+- you can try to set different parameters  to get different result,Ctrl+Z can undo.  
+- Default it is for whole score if you don't select any measure.it also works on selected portion,such as serval measures.it is useful for complicated score ,such as 4/4 ->3/4.  
+- you can adjust chord symbols manually if think it is not right or not accuracy.   
+- if the gap is two narrow between treble staff and bass staff,you can change it ,Muscore->style->General->Page->Grand staff distance.    
 
 
 More info: https://musescore.org/en/handbook/plugins  
