@@ -3,7 +3,7 @@
 <h3>Chord Identifier Plugin  for Musescore</h3>  
 - Shows chords used in classical music: triads (major, minor, diminished) and seventh chords (MM7, m7, Mm7, dim7).  
 - Identify chords and put chord symbol between treble staff and bass staff.  
-- Identify chord by measure, you can also define how many chord in one measure.     
+- Identify chord by measure, you can also define how many chord in one measure.  
 
 <h3>Example 1 :Chord</h3>  
 <img height="474px" src="https://github.com/yindht/msc_plugins/blob/master/example1.png"/>  
