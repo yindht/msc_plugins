@@ -33,6 +33,7 @@ Then Set parameters and click "OK"
   
 <img src="https://github.com/yindht/msc_plugins/blob/master/panel.png"/>
 Parameters:  
+
 - Chord Per Measure:you need to define how many chords per measure for your specific score.  
 
 - Chord in :notes in a your choice staff (Grand/treble/all) will be used for chord identification.  Treble+ grand mode  will ignore  highest note(melody)  
