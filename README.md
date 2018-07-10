@@ -22,7 +22,7 @@
 
 
 1.Download 
-- [DOWNLOAD](https://github.com/rousselmanu/msc_plugins/archive) the last release.  
+- [DOWNLOAD](https://github.com/yindht/msc_plugins) the last release.  
 - Put the plugin (.qml) in the MuseScore/plugins folder (basically "C:\Program Files (x86)\MuseScore 2\plugins" in Windows).  
 - Restart MuseScore.
 - Go to menu "Plugins"->"Plugin Manager" , Enable the plugin "chord Identifer" (you can also associate a shortcut). then clike "OK"<br/>  
