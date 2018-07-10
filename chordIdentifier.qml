@@ -28,7 +28,7 @@ import QtQuick.Dialogs 1.0
 MuseScore {
     menuPath: "Plugins.Chords.Chord Identifier"
     description: "Identify chords and put chord symbol on top."
-    version: "3.0.0"
+    version: "2.3.0"
     
     pluginType: "dock"
     dockArea:   "left"
